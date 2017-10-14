@@ -24,7 +24,7 @@
             <version>${liquibase.version}</version>
         </dependency>
 
-        <!-- Cloudera Hive & Impala connector dependencies -->
+        <!-- Non-public Cloudera Hive & Impala connector dependencies -->
         <dependency>
             <groupId>com.cloudera.impala.jdbc</groupId>
             <artifactId>hive_metastore</artifactId>
@@ -55,6 +55,8 @@
             <artifactId>TCLIServiceClient</artifactId>
             <version>${impala.jdbc.version}</version>
         </dependency>
+
+        <!-- Public Cloudera Hive & Impala connector dependencies -->
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libfb303</artifactId>
