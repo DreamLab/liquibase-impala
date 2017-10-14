@@ -16,10 +16,13 @@ As of version 1.1.x the plugin was tested and should work with the following ver
 
 # How to install
 
-Download jdbc driver and dependencies from http://www.cloudera.com/downloads/connectors/impala/jdbc/2-5-32.html
+As of version 1.1.x liquibase-impala depends on proprietary Cloudera connectors for Impala and Hive. These are not present in any public Maven repositories.
+Therefore, to build and install the plugin, you must do the following:
 
-Unpack and put dependencies to local maven repository with the commands provided below
-
+1. Download Impala JDBC driver and its dependencies from http://www.cloudera.com/downloads/connectors/impala/jdbc/2-5-32.html
+2. Download Hive JDBC driver from http://www.cloudera.com/downloads/connectors/hive/jdbc/2-5-18.html
+3. Unpack and install the following dependencies in your local Maven repository, using standard Maven commands:
+```bash
 mvn install:install-file -Dfile=ql.jar -DgroupId=com.cloudera.impala.jdbc -DartifactId=ql -Dversion=2.5.32 -Dpackaging=jar
 
 mvn install:install-file -Dfile=hive_metastore.jar -DgroupId=com.cloudera.impala.jdbc -DartifactId=hive_metastore -Dversion=2.5.32 -Dpackaging=jar
@@ -30,7 +33,12 @@ mvn install:install-file -Dfile=ImpalaJDBC41.jar -DgroupId=com.cloudera.impala.j
 
 mvn install:install-file -Dfile=TCLIServiceClient.jar -DgroupId=com.cloudera.impala.jdbc -DartifactId=TCLIServiceClient -Dversion=2.5.32 -Dpackaging=jar
 
-mvn install:install-file -Dfile=HiveJDBC41.jar -DgroupId=com.cloudera.hive.jdbc -DartifactId=ImpalaJDBC41 -Dversion=2.5.32 -Dpackaging=jar
+mvn install:install-file -Dfile=HiveJDBC41.jar -DgroupId=com.cloudera.hive.jdbc -DartifactId=HiveJDBC41 -Dversion=2.5.18 -Dpackaging=jar
+```
+4. _(optional, but recommended)_ Deploy the above artifacts to your internal, private Maven repository like [Nexus](https://www.sonatype.com/nexus-repository-sonatype)
+or [Artifactory](https://www.jfrog.com/artifactory/) for subsequent use.
+5. Build liquibase-impala by executing ```mvn clean package```. This will create a _liquibase-impala.jar_ fat-jar in the _target/_ directory.
+6. _(optional, but recommended)_ Deploy liquibase-impala to tour internal, private Maven repository.
 
 # How to use
 
