@@ -32,7 +32,7 @@ public class TruncateGenerator extends AbstractSqlGenerator<TruncateTableStateme
 
     @Override
     public Sql[] generateSql(TruncateTableStatement statement, Database database, SqlGeneratorChain sqlGeneratorChain) {
-        final String sql = "TRUNCATE TABLE" + database.escapeTableName(statement.getCatalogName(),
+        final String sql = "TRUNCATE TABLE " + database.escapeTableName(statement.getCatalogName(),
                 statement.getSchemaName(), statement.getTableName());
         return new Sql[]{new UnparsedSql(sql, fetchAffectedTable(statement))};
     }
