@@ -7,7 +7,7 @@
     <packaging>jar</packaging>
     <version>1.1-SNAPSHOT</version>
     <name>liquibase-impala</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/eselyavka/liquibase-impala</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -51,7 +51,13 @@
     </pluginRepositories>
 
     <dependencies>
-        <!-- Core dependencies -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+
+        <!-- Non-public Cloudera Hive & Impala connector dependencies -->
         <dependency>
             <groupId>com.cloudera.impala.jdbc</groupId>
             <artifactId>hive_metastore</artifactId>
@@ -82,13 +88,8 @@
             <artifactId>TCLIServiceClient</artifactId>
             <version>${impala.jdbc.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.version}</version>
-        </dependency>
 
-        <!-- Misc dependencies -->
+        <!-- Public Cloudera Hive & Impala connector dependencies -->
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libfb303</artifactId>
