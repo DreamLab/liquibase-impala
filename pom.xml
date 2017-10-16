@@ -217,8 +217,8 @@
                                 <username>{{MAVEN_USERNAME}}</username>
                                 <password>{{MAVEN_API_KEY}}</password>
                                 <excludePatterns>*-tests.jar</excludePatterns>
-                                <repoKey>libs-release-local</repoKey>
-                                <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                                <repoKey>plugins-release-local</repoKey>
+                                <snapshotRepoKey>plugins-snapshot-local</snapshotRepoKey>
                             </publisher>
                         </configuration>
                     </execution>
